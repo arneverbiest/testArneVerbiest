@@ -10,32 +10,35 @@ public class Solution
     public static char lostCharNW(string stringSent, string stringRec)
     {
         char answer = '*';
-        if (stringSent != stringRec)
+        char[] array1 = new char[stringSent.Length];
+        char[] array2 = new char[stringRec.Length];
+
+
+
+        for (int i = 0; i < stringSent.Length; i++)
         {
-            for (int i = 0; i < stringSent.Length; i++)
-            {
-                if (stringSent.Length < stringRec.Length)
-                {
-                    Console.WriteLine(stringSent.LastIndexOf(stringSent));
-                }
-
-                /*
-                                if (stringSent[i] != stringRec[i])
-                                {
-                                    Console.WriteLine(stringRec[i]);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("the output is the same");
-                        }
-                 */
-
-
-            }
+            array1[i] = stringSent[i];
         }
-                return answer;
+        for (int i = 0; i < stringRec.Length; i++)
+        {
+            array2[i] = stringRec[i];
+        }
+
+        Console.WriteLine("array1");
+        foreach (var c in array1)
+        {
+            Console.WriteLine(c);
+        }
+        Console.WriteLine("array2");
+        foreach (var d in array2)
+        {
+            Console.WriteLine(d);
+        }
+        
+
+
+
+        return answer;
         
     }
 

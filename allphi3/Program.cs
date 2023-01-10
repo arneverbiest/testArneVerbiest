@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Metrics;
 using System.Xml;
 
 
@@ -11,6 +12,7 @@ public class Solution
     {
 
         int answer = 0;
+        int counter = 1;
 
 
 
@@ -19,17 +21,22 @@ public class Solution
 
         for (int i = 1; i < busStation.GetLength(0); i++)
         {
-            if (busStation[i, 1] >= busStation[i - 1, 1])
+            counter++;
+            Console.WriteLine(counter);
+            if ((busStation[i, 1] >= busStation[i - 1, 1]) && (busStation[i,0] <= busStation[i-1, 1]))
             {
-                Console.WriteLine($"{busStation[i, 1]} >= {busStation[i - 1, 1]}");
-                if (busStation[i, 0] <= busStation[i - 1, 1])
-                {
-                    Console.WriteLine($"{busStation[i, 0]} <= {busStation[i - 1, 1]}");
-                    answer++;
+                answer++;
+                Console.WriteLine(answer);
 
-                }
             }
+
         }
+        Console.WriteLine($"antwoord is nu: {answer}");
+        Console.WriteLine($"counter is nu: {counter}");
+        answer = counter - answer;
+        Console.WriteLine($"the anwser is: {answer}");
+        Console.WriteLine($"antwoord is nu: {answer}");
+        Console.WriteLine($"counter is nu: {counter}");
         return answer;
     }
 
@@ -39,7 +46,8 @@ public class Solution
         //input for busStation
         input = Console.ReadLine().Split(' ');
         int busStation_row = int.Parse(input[0]);
-        int busStation_col = int.Parse(input[1]);
+        
+         int busStation_col = int.Parse(input[1]);
         int[,] busStation = new int[busStation_row, busStation_col];
         for (int idx = 0; idx < busStation_row; idx++)
         {
@@ -49,7 +57,6 @@ public class Solution
                 busStation[idx, jdx] = int.Parse(input[jdx]);
             }
         }
-
 
 
 
