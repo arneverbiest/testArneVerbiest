@@ -3,40 +3,30 @@ using System.Diagnostics.Metrics;
 using System.Xml;
 
 
-/*
- * 
- */
 public class Solution
 {
     public static int busRemaining(int[,] busStation)
     {
-
+        //declaratie
         int answer = 0;
         int counter = 1;
 
-
-
-
-
-
+        //elke waarde tellen
         for (int i = 1; i < busStation.GetLength(0); i++)
         {
+
+            //totaal aantal busroutes optellen
             counter++;
-            Console.WriteLine(counter);
+            //controleren of busroutes overlappen
             if ((busStation[i, 1] >= busStation[i - 1, 1]) && (busStation[i,0] <= busStation[i-1, 1]))
             {
                 answer++;
-                Console.WriteLine(answer);
-
             }
-
         }
-        Console.WriteLine($"antwoord is nu: {answer}");
-        Console.WriteLine($"counter is nu: {counter}");
+
+        //totaal aantal busroutes aftrekken van de overlappende
         answer = counter - answer;
-        Console.WriteLine($"the anwser is: {answer}");
-        Console.WriteLine($"antwoord is nu: {answer}");
-        Console.WriteLine($"counter is nu: {counter}");
+
         return answer;
     }
 
@@ -59,9 +49,8 @@ public class Solution
         }
 
 
-
         int result = busRemaining(busStation);
-        Console.WriteLine($"there will be {result} bus routes less");
+        Console.WriteLine($"the remaining routes are {result}");
         Console.Write(result);
 
     }
