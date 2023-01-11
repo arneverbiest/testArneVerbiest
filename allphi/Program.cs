@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 
 
 /*
@@ -10,37 +12,29 @@ public class Solution
     public static char lostCharNW(string stringSent, string stringRec)
     {
         char answer = '*';
-        char[] array1 = new char[stringSent.Length];
-        char[] array2 = new char[stringRec.Length];
 
+        List<char> sentList = new List<char>();
+        List<char> recList = new List<char>();
 
-
-        for (int i = 0; i < stringSent.Length; i++)
+        if (stringSent.Length > stringRec.Length)
         {
-            array1[i] = stringSent[i];
-        }
-        for (int i = 0; i < stringRec.Length; i++)
-        {
-            array2[i] = stringRec[i];
+            for (int i = 0; i < stringSent.Length; i++)
+            {
+                sentList.Add(stringSent[i]);
+            }
+
+            for (int i = 0; i < stringRec.Length; i++)
+            {
+                recList.Add(stringRec[i]);
+            }
         }
 
-        Console.WriteLine("array1");
-        foreach (var c in array1)
-        {
-            Console.WriteLine(c);
-        }
-        Console.WriteLine("array2");
-        foreach (var d in array2)
-        {
-            Console.WriteLine(d);
-        }
-        
-
-
+        List<char> answerList = sentList.Except(recList).ToList();
+        answer = answerList[0];
 
         return answer;
-        
     }
+
 
     public static void Main(string[] args)
     {
@@ -51,9 +45,7 @@ public class Solution
         //input for stringRec
         string stringRec = (Console.ReadLine());
 
-
         char result = lostCharNW(stringSent, stringRec);
         Console.Write(result);
-
     }
 }
